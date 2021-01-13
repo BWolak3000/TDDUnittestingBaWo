@@ -1,47 +1,51 @@
 #pragma once
-//#include <initializer_list>
+#include <iostream>
 
 template<typename T>
-// feel free to add/delete methods of LinkedList class, this file is suggestion rather than requirement
 class LinkedList
 {
 public:
-	LinkedList()
-	{
-		// to implement
-	}
-	LinkedList(const std::initializer_list<T>& newValues)
-	{
-		// to implement
-	}
+	LinkedList() :_head(nullptr), _size(0) {}
+
 	void pushFront(const T& newValue)
 	{
-		// to implement
+		_size++;
+		if (_head == nullptr) {
+			_head = new Node(newValue); return;
+		}
+		else {
+			Node* node = new Node(newValue);
+			node->next = _head;
+			_head = node;
+		}
 	}
+
 	void pushBack(const T& newValue)
 	{
+		pushFront(newValue);
 		// to implement
 	}
 	[[nodiscard]]  T popFront()
 	{
-		return 2;
+		
+		T val = _head->value;
+		Node* temp = _head->next;
+		_head->next = nullptr;
+		_head = temp;
+		return val;
 		// to implement
 	}
 	[[nodiscard]]  T popBack()
 	{
-		// to implement
+		return popFront();
 	}
 	[[nodiscard]] unsigned getSize() const
 	{
-		// to implement
+		return _size;
 	}
 	[[nodiscard]] bool isEmpty() const
 	{
-		// to implement
-	}
-	void clear()
-	{
-		// to implement
+		return(_head == nullptr);
 	}
 
 private:
@@ -52,5 +56,6 @@ private:
 		T value;
 	};
 	Node* _head;
+	int _size;
 };
 
