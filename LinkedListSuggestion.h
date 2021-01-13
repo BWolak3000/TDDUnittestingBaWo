@@ -1,5 +1,5 @@
 #pragma once
-#include <initializer_list>
+//#include <initializer_list>
 
 template<typename T>
 // feel free to add/delete methods of LinkedList class, this file is suggestion rather than requirement
@@ -24,6 +24,7 @@ public:
 	}
 	[[nodiscard]]  T popFront()
 	{
+		return 2;
 		// to implement
 	}
 	[[nodiscard]]  T popBack()
@@ -44,13 +45,12 @@ public:
 	}
 
 private:
-	Node* _head;
 	struct Node
 	{
 		Node(const T& newValue) : value{ newValue } {}
 		Node* next = nullptr;
 		T value;
 	};
-
+	Node* _head;
 };
 
